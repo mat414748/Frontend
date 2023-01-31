@@ -35,9 +35,10 @@ function logout() {
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         login.innerText = "Login";
         customAlert(3,"Successfully logout");
+        document.getElementById("clientList").style.display = "none";
+        typeOfHomePage = 0;
         mainPage();
         login.onclick = function() {
-            typeOfHomePage = 0;
             loginWindow();
         };
     }
@@ -83,6 +84,7 @@ function loginWindow() {
             customAlert(1, "Please enter the password");
         } else {
             authentication(usernameInput, passwordInput);
+            logout();
             typeOfHomePage = 1;
             mainPage();
         }
@@ -118,6 +120,19 @@ function mainPage() {
     welcomeText.className = "text-[40px]";
     loginHome.className = "text-[40px] bg-sky-400 border-4 border-black rounded-lg mt-5 pb-2 m-auto w-80 cursor-pointer";
     mainDiv.className = "text-center mt-20"
+
+    loginHome.addEventListener("click", function() {
+        switch (typeOfHomePage) {
+            case 0: 
+                loginWindow();
+                break;
+            case 1:
+                const login = document.getElementById("loginLogout");
+                login.click();
+                break;
+        }
+        
+    })
 
     mainDiv.appendChild(welcome);
     mainDiv.appendChild(welcomeText);
@@ -257,11 +272,17 @@ function createClientList() {
     mainDiv.innerHTML = '';
 
     const namePanel = document.createElement("div");
+    const createAndSearch = document.createElement("div");
     const createClientButton = document.createElement("div");
+    const searchField = document.createElement("input");
     const tableView = document.createElement("table");
     const tableHead = document.createElement("tr");
     createTableHead(tableHead);
 
+    searchField.placeholder = "🔎 What are you looking for?";
+
+    createAndSearch.className = "flex flex-row";
+    searchField.className = "ml-40 text-[25px] text-left w-[30rem] m-auto border-2  border-black rounded placeholder:italic placeholder:text-slate-400";
     namePanel.className = "text-left text-[40px] font-bold";
     createClientButton.className = "text-left text-[40px] bg-green-500 text-white border-2  border-black w-[40%] font-bold mt-5 mb-5 cursor-pointer";
     tableHead.className = "bg-teal-400 w-auto";
@@ -275,9 +296,11 @@ function createClientList() {
         createOrEditClient();
     })
 
+    createAndSearch.appendChild(createClientButton);
+    createAndSearch.appendChild(searchField);
     tableView.appendChild(tableHead);
     mainDiv.appendChild(namePanel);
-    mainDiv.appendChild(createClientButton);
+    mainDiv.appendChild(createAndSearch);
     mainDiv.appendChild(tableView);
 
     generateList();

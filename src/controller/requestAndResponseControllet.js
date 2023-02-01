@@ -1,6 +1,8 @@
+//Result of each request
 let requestResult = 0;
-//PUT
+//PUT 
 function updateClient(id, name, surname, sex, email, creditRaiting, street, postcode, city, billingAdress, privatePhonenumber, companyPhonenumber) {
+    //Data block
     var data = {
         Name: name,
         Surname: surname,
@@ -29,6 +31,7 @@ function updateClient(id, name, surname, sex, email, creditRaiting, street, post
 }
 //POST
 function createClient(name, surname, sex, email, creditRaiting, street, postcode, city, billingAdress, privatePhonenumber, companyPhonenumber) {
+    //Data block
     var data = {
         Name: name,
         Surname: surname,
@@ -55,6 +58,7 @@ function createClient(name, surname, sex, email, creditRaiting, street, postcode
     request.onreadystatechange = requestCreateAndUpdate; 
     request.send(JSON.stringify(data));
 }
+//Get response from server after PUT or POST requests
 function requestCreateAndUpdate(event) {
     if (request.readyState < 4) {
         return;
@@ -70,6 +74,7 @@ function deleteClient(id) {
     request.onreadystatechange = requestDelete; 
     request.send();
 }
+//Answer for DELETE request
 function requestDelete(event) { 
     if (request.readyState < 4) {
         return;
@@ -85,6 +90,7 @@ function getAllClients() {
     request.onreadystatechange = requestAnswer; 
     request.send();
 }
+//Answer for GET all request
 function requestAnswer(event) { 
     if (request.readyState < 4) {
         return;
@@ -102,60 +108,9 @@ function requestAnswer(event) {
         }
     }
 }
-//GET ONE
-function getClient(id, forPermalink = 0) {
-    request = new XMLHttpRequest();
-    request.open("GET", "/Oneclient/" + id);
-    request.onreadystatechange = function() {
-        requestOne(event, id, forPermalink)
-    }; 
-    request.send();
-}
-function requestOne(event, id, forPermalink) {
-    if (request.readyState < 4) {
-        return;
-    } 
-    if (JSON.parse(request.responseText).message == "Unauthorised") {
-        alert(JSON.parse(request.responseText).message);
-        document.body.appendChild(helloWorld);
-    } else {
-        if (event.currentTarget.responseURL.includes("/levantsou-matvej/API/V1/Category")) {
-            if (forPermalink == 0) {
-                requestResult = JSON.parse(request.responseText).message;
-                createOrUpdateTableElement(0, 1, id);
-                if (requestResult == "No category found") {
-                    alert(requestResult);
-                }
-            } else {
-                requestResult = JSON.parse(request.responseText).message;
-                if (requestResult == "No category found") {
-                    alert(requestResult);
-                    document.body.appendChild(helloWorld);
-                } else {
-                    createList();
-                }
-            }      
-        } else if (event.currentTarget.responseURL.includes("/levantsou-matvej/API/V1/Product")) {
-            if (forPermalink == 0) {
-                requestResult = JSON.parse(request.responseText).message;
-                createOrUpdateTableElement(1, 1, id);
-                if (requestResult == "No product found") {
-                    alert(requestResult);
-                }
-            } else {
-                requestResult = JSON.parse(request.responseText).message;
-                if (requestResult == "No product found") {
-                    alert(requestResult);
-                    document.body.appendChild(helloWorld);
-                } else {
-                    createList(1);
-                }     
-            }
-        }
-    }
-}
 //AUTHENTICATION
 function authentication(name, password) {
+    //Data block
     var data = {
             username: name.value,
             password: password.value
@@ -165,6 +120,7 @@ function authentication(name, password) {
     request.onreadystatechange = requestAuthentication; 
     request.send(JSON.stringify(data));
 }
+//Answer after POST authentication request
 function requestAuthentication() { 
     if (request.readyState < 4) {
         return;

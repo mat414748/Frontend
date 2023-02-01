@@ -12,7 +12,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.privatePhonenumber;
+    tableCell.innerText = Object.values(tableData)[12];
     tableLine.appendChild(tableCell);  
     
     tableCell = document.createElement("td");
@@ -22,7 +22,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.creditRaiting;
+    tableCell.innerText = Object.values(tableData)[14];
     tableLine.appendChild(tableCell);
       
     subTable.appendChild(tableLine);
@@ -36,7 +36,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.companyPhonenumber;
+    tableCell.innerText = Object.values(tableData)[8];
     tableLine.appendChild(tableCell);  
     
     tableCell = document.createElement("td");
@@ -46,7 +46,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.debt;
+    tableCell.innerText = tableData.Debt;
     tableLine.appendChild(tableCell);
       
     subTable.appendChild(tableLine);
@@ -60,7 +60,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.regularClient;
+    tableCell.innerText = "Yes";
     tableLine.appendChild(tableCell);  
     
     tableCell = document.createElement("td");
@@ -70,7 +70,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.creditCard;
+    tableCell.innerText = tableData.Creditcard;
     tableLine.appendChild(tableCell);
       
     subTable.appendChild(tableLine);
@@ -94,7 +94,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.bill;
+    tableCell.innerText = tableData.Bill;
     tableLine.appendChild(tableCell);
       
     subTable.appendChild(tableLine);
@@ -108,7 +108,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.billingAdress;
+    tableCell.innerText = Object.values(tableData)[7];
     tableLine.appendChild(tableCell);  
     
     tableCell = document.createElement("td");
@@ -118,7 +118,7 @@ function subInformation(tableData) {
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " ";
-    tableCell.innerText = tableData.prepayment;
+    tableCell.innerText = tableData.Prepayment;
     tableLine.appendChild(tableCell);
       
     subTable.appendChild(tableLine);

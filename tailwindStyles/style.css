@@ -545,12 +545,8 @@ video {
   top: 5rem;
 }
 
-.left-\[0\] {
-  left: 0;
-}
-
-.bottom-\[0\] {
-  bottom: 0;
+.bottom-\[0px\] {
+  bottom: 0px;
 }
 
 .z-10 {
@@ -579,6 +575,10 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
 }
 
 .mt-1 {
@@ -621,16 +621,8 @@ video {
   margin-top: 0px;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .ml-5 {
   margin-left: 1.25rem;
-}
-
-.ml-20 {
-  margin-left: 5rem;
 }
 
 .ml-40 {
@@ -745,10 +737,6 @@ video {
   width: 80%;
 }
 
-.w-\[50px\] {
-  width: 50px;
-}
-
 .min-w-max {
   min-width: -moz-max-content;
   min-width: max-content;
@@ -801,6 +789,12 @@ video {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.25rem * var(--tw-space-x-reverse));
   margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rounded {
@@ -948,6 +942,10 @@ video {
   text-align: right;
 }
 
+.text-\[40px\] {
+  font-size: 40px;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -955,10 +953,6 @@ video {
 
 .text-\[15px\] {
   font-size: 15px;
-}
-
-.text-\[40px\] {
-  font-size: 40px;
 }
 
 .text-\[20px\] {

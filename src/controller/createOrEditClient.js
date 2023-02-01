@@ -48,17 +48,17 @@ function createOrEditClient(operationType = 0, tableData) {
     companyPhonenumber.innerText = "Company phonenumber";
 
     if (operationType == 1) {
-        nameInput.value = tableData.name;
-        surnameInput.value = tableData.surname;
-        sexInput.value = tableData.sex;
-        emailInput.value = tableData.email;
-        creditRaitingInput.value = tableData.surname.creditRaiting;
-        streetInput.value = tableData.street;
-        postcodeInput.value = tableData.postcode;
-        cityInput.value = tableData.city;
-        billingAdressInput.value = tableData.billingAdress;
-        privatePhonenumberInput.value = tableData.privatePhonenumber;
-        companyPhonenumberInput.value = tableData.companyPhonenumber; 
+        nameInput.value = tableData.Name;
+        surnameInput.value = tableData.Surname;
+        sexInput.value = tableData.Sex;
+        emailInput.value = Object.values(tableData)[10];
+        creditRaitingInput.value = Object.values(tableData)[14];
+        streetInput.value = tableData.Street;
+        postcodeInput.value = tableData.Postcode;
+        cityInput.value = tableData.City;
+        billingAdressInput.value = Object.values(tableData)[7];
+        privatePhonenumberInput.value = Object.values(tableData)[12];
+        companyPhonenumberInput.value = Object.values(tableData)[8]; 
     }
 
     nameInput.placeholder = "Enter client name";
@@ -118,11 +118,11 @@ function createOrEditClient(operationType = 0, tableData) {
 
     if (operationType == 0) {
         createNow.addEventListener("click", function() {
-            createClient(tableData.name, tableData.surname, tableData.sex, tableData.email, tableData.creditRaiting, tableData.street, tableData.postcode, tableData.city, tableData.billingAdress, tableData.privatePhonenumber, tableData.companyPhonenumber);
+            createClient(nameInput.value, surnameInput.value, sexInput.value, emailInput.value, creditRaitingInput.value, streetInput.value, postcodeInput.value, cityInput.value, billingAdressInput.value, privatePhonenumberInput.value, companyPhonenumberInput.value);
         }) 
     } else {
         createNow.addEventListener("click", function() {
-            updateClient(tableData.client_id, tableData.name, tableData.surname, tableData.sex, tableData.email, tableData.creditRaiting, tableData.street, tableData.postcode, tableData.city, tableData.billingAdress, tableData.privatePhonenumber, tableData.companyPhonenumber);
+            updateClient(tableData.ID, nameInput.value, surnameInput.value, sexInput.value, emailInput.value, creditRaitingInput.value, streetInput.value, postcodeInput.value, cityInput.value, billingAdressInput.value, privatePhonenumberInput.value, companyPhonenumberInput.value);
         }) 
     }
 

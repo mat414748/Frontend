@@ -30,7 +30,7 @@ header("Content-Type: application/json");
 
 $app = AppFactory::create();
 
-$app->setBasePath("/306B/API/v1");
+$app->setBasePath("/API/v1");
 
 /**
  * This will work
@@ -161,18 +161,18 @@ $app->post("/Client", function (Request $request, Response $response, $args) {
     $street = validate_string($JSON_data["Street"]);
     $postcode = validate_string($JSON_data["Postcode"]);
     $city = validate_string($JSON_data["City"]);
-    $billingaddress = validate_number($JSON_data["Billing Address"]);
-    $phonenumber_company = validate_string($JSON_data["Phonenumber Company"]);
-    $phonenumber_private = validate_string($JSON_data["Phonenumber Private"]);
-    $email = validate_string($JSON_data["E-Mail"]);
-    $join_date = validate_string($JSON_data["Join Date"]);
+    $billingaddress = validate_number($JSON_data["billingAddress"]);
+    $phonenumber_company = validate_string($JSON_data["phonenumberCompany"]);
+    $phonenumber_private = validate_string($JSON_data["phonenumberPrivate"]);
+    $email = validate_string($JSON_data["email"]);
+    $join_date = validate_string($JSON_data["joinDate"]);
     $vip = validate_boolean($JSON_data["VIP"]);
-    $high_frequenz = validate_boolean($JSON_data["High frequency"]);
-    $credit_rating = validate_string($JSON_data["Credit Rating"]);
-    $debt = validate_number($JSON_data["Debt"]);
-    $creditcard = validate_boolean($JSON_data["Creditcard"]);
-    $bill = validate_boolean($JSON_data["Bill"]);
-    $prepayement = validate_boolean($JSON_data["Prepayment"]);
+    $high_frequenz = validate_boolean($JSON_data["highFrequency"]);
+    $credit_rating = validate_string($JSON_data["creditRating"]);
+    $debt = validate_number($JSON_data["debt"]);
+    $creditcard = validate_boolean($JSON_data["creditcard"]);
+    $bill = validate_boolean($JSON_data["bill"]);
+    $prepayement = validate_boolean($JSON_data["prepayment"]);
 
     if (!$sex) {
         error_function(400, "sex is invalid, must contain at least 8 characters");
@@ -280,18 +280,18 @@ $app->put("/Client/{user_id}", function (Request $request, Response $response, $
     $street = validate_string($JSON_data["Street"]);
     $postcode = validate_string($JSON_data["Postcode"]);
     $city = validate_string($JSON_data["City"]);
-    $billingaddress = validate_number($JSON_data["Billingaddress"]);
-    $phonenumber_company = validate_string($JSON_data["Phonenumber Company"]);
-    $phonenumber_private = validate_string($JSON_data["Phonenumber Private"]);
-    $email = validate_string($JSON_data["E-Mail"]);
-    $join_date = validate_string($JSON_data["Join Date"]);
+    $billingaddress = validate_number($JSON_data["billingAddress"]);
+    $phonenumber_company = validate_string($JSON_data["phonenumberCompany"]);
+    $phonenumber_private = validate_string($JSON_data["phonenumberPrivate"]);
+    $email = validate_string($JSON_data["email"]);
+    $join_date = validate_string($JSON_data["joinDate"]);
     $vip = validate_boolean($JSON_data["VIP"]);
-    $high_frequenz = validate_boolean($JSON_data["High frequency"]);
-    $credit_rating = validate_string($JSON_data["Credit Rating"]);
-    $debt = validate_number($JSON_data["Debt"]);
-    $creditcard = validate_boolean($JSON_data["Creditcard"]);
-    $bill = validate_boolean($JSON_data["Bill"]);
-    $prepayement = validate_boolean($JSON_data["Prepayement"]);
+    $high_frequenz = validate_boolean($JSON_data["highFrequency"]);
+    $credit_rating = validate_string($JSON_data["creditRating"]);
+    $debt = validate_number($JSON_data["debt"]);
+    $creditcard = validate_boolean($JSON_data["creditcard"]);
+    $bill = validate_boolean($JSON_data["bill"]);
+    $prepayement = validate_boolean($JSON_data["prepayment"]);
 
     if (!$sex) {
         error_function(400, "sex is invalid, must contain at least 8 characters");

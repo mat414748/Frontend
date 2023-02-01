@@ -42,15 +42,15 @@
             }
         }
         if (isset($email)) {
-            $result = $database->query("SELECT * FROM clients WHERE E-Mail = \"$email\" AND NOT ID = '$client_id';");
+            $result = $database->query("SELECT * FROM clients WHERE 'E-Mail' = \"$email\" AND NOT ID = '$client_id';");
             if ($result !== true) {
                 if ($result->num_rows > 0) {
                     error_function(404, "Mail Alredy Exists");
                 }
             }
         }
-
-        $result = $database->query("UPDATE clients SET Sex = $sex, Name = $name, Surname = $surname, Street = $street, Postcode = $postcode, City = $city, Billingaddress = $billingaddress, 'Phonenumber Company' = $phonenumber_company, 'Phonenumber Private' = $phonenumber_private, E-Mail = $email, Vip = $vip, 'High Frequenz' = $high_frequenz, 'Credit Rating' = $credit_rating, Debt = $debt, Creditcard = $creditcard, Bill = $bill, Prepayement = $prepayement WHERE ID = $client_id;");
+        //, Billingaddress = '$billingaddress', 'Phonenumber Company' = '$phonenumber_company', 'Phonenumber Private' = '$phonenumber_private', E-Mail = '$email', Vip = '$vip', 'High Frequenz' = '$high_frequenz', 'Credit Rating' = '$credit_rating', Debt = '$debt', Creditcard = '$creditcard', Bill = '$bill', Prepayement = '$prepayement'
+        $result = $database->query("UPDATE clients SET Sex = '$sex', Name = '$name', Surname = '$surname', Street = '$street', Postcode = '$postcode', City = '$city' WHERE ID = $client_id");
         if ($result == true) {
             message_function(201, "Succesfuly Created");
 		}

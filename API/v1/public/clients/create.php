@@ -33,15 +33,15 @@
             }
         }
         if (isset($email)) {
-            $result = $database->query("SELECT * FROM clients WHERE E-Mail = \"" . $email . "\";");
+            $result = $database->query("SELECT * FROM clients WHERE 'E-Mail' = \"" . $email . "\";");
             if ($result !== true) {
                 if ($result->num_rows > 0) {
                     error_function(404, "Mail Alredy Exists");
                 }
             }
         }
-
-        $result = $database->query("INSERT INTO clients (Sex, Name, Surname, Street, Postcode, City, Billingaddress, 'Phonenumber Company', 'Phonenumber Private', E-Mail, Vip, 'High Frequenz', 'Credit Rating', Debt, Creditcard, Bill, Prepayement) VALUES ($sex, $name, $surname, $street, $postcode, $city, $billingaddress, $phonenumber_company, $phonenumber_private, $email, $vip, $high_frequenz, $credit_rating, $debt, $creditcard, $bill, $prepayement);");
+        $billCreate = $database->query("INSERT INTO billingadress (Name, Surname, Street, Postcode, City) VALUES ('$name', '$surname', '$street', '$postcode', '$city')");
+        $result = $database->query("INSERT INTO clients (Sex, Name, Surname, Street, Postcode, City, `Billing Address`, `Phonenumber Company`, `Phonenumber Private`, `E-Mail`, VIP, `High frequency`, `Credit Rating`, Debt, Creditcard, Bill, Prepayment ) VALUES ('$sex', '$name', '$surname', '$street', '$postcode', '$city', (SELECT ID FROM `billingadress` WHERE Street='$street'), '$phonenumber_company', '$phonenumber_private', '$email', '$vip', '$high_frequenz', '$credit_rating', '$debt', '$creditcard', '$bill', '$prepayement')");
         if ($result == true) {
             message_function(201, "Succesfuly Created");
 		}

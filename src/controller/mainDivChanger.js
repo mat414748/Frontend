@@ -84,9 +84,6 @@ function loginWindow() {
             customAlert(1, "Please enter the password");
         } else {
             authentication(usernameInput, passwordInput);
-            logout();
-            typeOfHomePage = 1;
-            mainPage();
         }
     })
 
@@ -202,22 +199,25 @@ function createTableLine(tableData, rowId) {
 
     let tableCell = document.createElement("td");
     tableCell.className = tab + " w-[20%]";
-    tableCell.innerText = tableData.name + tableData.surname;
+    tableCell.innerText = tableData.Name + " " + tableData.Surname;
+    if (tableCell.innerText.length > 20) {
+        tableCell.innerText = tableCell.innerText.slice(0, 20);
+    }
     tableLine.appendChild(tableCell);   
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " w-[10%]";
-    tableCell.innerText = tableData.sex;
+    tableCell.innerText = tableData.Sex;
     tableLine.appendChild(tableCell);  
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " w-[25%]";
-    tableCell.innerText = tableData.street + tableData.postcode + tableData.city;
+    tableCell.innerText = tableData.Street + tableData.Postcode + tableData.City;
     tableLine.appendChild(tableCell);  
 
     tableCell = document.createElement("td");
     tableCell.className = tab + " w-[25%]";
-    tableCell.innerText = tableData.email;
+    tableCell.innerText = Object.values(tableData)[10];
     tableLine.appendChild(tableCell); 
 
     const deleteLine = document.createElement("div");
@@ -233,7 +233,7 @@ function createTableLine(tableData, rowId) {
     editLine.className = "ml-5 border-2  border-black rounded pt-2 pr-1 text-orange-500 cursor-pointer";
     moreInfo.className = "ml-5 font-bold text-[30px] cursor-pointer rotate-0";
     tableLine.className = "w-auto";
-    subTable.className = "m-auto w-[100%]";
+    subTable.className = "m-auto w-[100%] mb-10 mt-10";
 
     tableCell = document.createElement("td");
     tableCell.className = "w-auto text-[20px] text-left bg-white flex flex-row w-auto";
@@ -253,7 +253,7 @@ function createTableLine(tableData, rowId) {
     })
 
     deleteLine.addEventListener("click", function(event) {
-        deleteClient(tableData.client_id);
+        deleteClient(tableData.ID);
     })
 
     editLine.addEventListener("click", function() {
@@ -265,6 +265,8 @@ function createTableLine(tableData, rowId) {
     tableCell.appendChild(moreInfo);
     tableLine.appendChild(tableCell); 
     subTable.appendChild(tableLine);
+
+    return subTable;
 }
 
 function createClientList() {
@@ -308,9 +310,6 @@ function createClientList() {
 
 function generateList() {
     getAllClients();
-    for (let i = 0; i < requestResult; i++) {
-        mainDiv.appendChild(createTableLine(requestResult), i);
-    }
 }
 
 setEvent();

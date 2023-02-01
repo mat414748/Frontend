@@ -233,7 +233,7 @@ function createTableLine(tableData, rowId) {
     editLine.className = "ml-5 border-2  border-black rounded pt-2 pr-1 text-orange-500 cursor-pointer";
     moreInfo.className = "ml-5 font-bold text-[30px] cursor-pointer rotate-0";
     tableLine.className = "w-auto";
-    subTable.className = "m-auto w-[100%] mb-10 mt-10";
+    subTable.className = "m-auto w-[100%] mt-10";
 
     tableCell = document.createElement("td");
     tableCell.className = "w-auto text-[20px] text-left bg-white flex flex-row w-auto";
